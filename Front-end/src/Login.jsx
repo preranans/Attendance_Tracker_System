@@ -8,21 +8,20 @@ function Login() {
         email: '',
         password: ''
     })
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     // axios.defaults.withCredentials = true;
-    // const [error, setError] = useState('')
+    const [error, setError] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post('http://localhost:8081/login', values)
-            .then((res) => console.log(res)
-                // {
-                //     if (res.data.Status === 'Success') {
-                //         navigate('/');
-                //     } else {
-                //         setError(res.data.Error);
-                //     }
-                // }
+            .then((res) => {
+                if (res.data.Status === 'Success') {
+                    navigate('/');
+                } else {
+                    setError(res.data.Error);
+                }
+            }
             )
             .catch(err => console.log(err));
     }
@@ -30,8 +29,8 @@ function Login() {
     return (
         <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
             <div className='p-3 rounded w-25 border loginForm'>
-                <div className='text-danger'>
-                    {/* {error && error} */}
+                <div className='error-cond' style={{ color: "yellow" }}>
+                    {error && error}
                 </div>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
@@ -46,7 +45,7 @@ function Login() {
                             onChange={e => setValues({ ...values, password: e.target.value })} className='form-control rounded-0' />
                     </div>
                     <button type='submit' className='btn btn-success w-100 rounded-0'> Log in</button>
-                    <input type="checkbox" name="checkbox1" />
+                    <input type="checkbox" name="checkbox1" required />
                     <label for="checkbox1"> <br></br>  I agree to the terms and policies</label><br></br>
                 </form>
             </div>
