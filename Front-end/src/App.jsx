@@ -5,6 +5,8 @@ import './App.css'
 import Login from './login'
 import { BrowserRouter, Routes, Router, Route } from 'react-router-dom'
 import Dashboard from './Dashboard'
+import ViewAttendance from './components/ViewAttendance'
+import MarkAttendance from './components/MarkAttendance'
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Dashboard />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/viewattendance' element={<ViewAttendance />}></Route>
+        <Route path='/markattendance' element={<MarkAttendance />}></Route>
       </Routes>
     </BrowserRouter>
   )

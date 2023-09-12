@@ -1,8 +1,9 @@
-import React from 'react'
-import '../bootstrap-icons/font/bootstrap-icons.min.css'
-// import { Link, Outlet, useNavigate } from 'react-router-dom'
-// import axios from 'axios'
-
+import React from 'react';
+import '../bootstrap-icons/font/bootstrap-icons.min.css';
+import Header from './components/Header';
+import { Link } from 'react-router-dom'
+import Footer from './components/Footer';
+import MainContent from './components/MainContent';
 export default function Dashboard() {
     return (
         <div className="container-fluid">
@@ -14,50 +15,48 @@ export default function Dashboard() {
                         </a>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li className="nav-item">
-                                <a href="#" className="nav-link align-middle px-0">
+                                <Link to="/" className="nav-link align-middle px-0 text-white">
                                     <i className="fs-4 bi-house"></i> <span className="ms-1 d-none d-sm-inline">Home</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                                <a href="#submenu1" data-bs-toggle="collapse" className="nav-link align-middle px-0 text-white">
+                                    <i className="fs-4 bi-table"></i> <span className="
+                                    ms-1 d-none 
+                                    d-sm-inline">Attendance</span>
+                                </a>
                                 <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li className="w-100">
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 1 </a>
+                                        <Link to="/markattendance" className="nav-link px-0 text-white"> <i className="fs-4 bi-check-circle"></i> <span className="ms-2 d-none d-sm-inline">Mark Attendance</span> </Link>
                                     </li>
                                     <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 2 </a>
+                                        <Link to="/viewattendance" className="nav-link px-0 text-white"> <i className="fs-4 bi-calendar-check"></i> <span className="ms-2 d-none d-sm-inline">View Attendance</span> </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline">Orders</span></a>
-                            </li>
-                            <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" className="nav-link px-0 align-middle ">
-                                    <i className="fs-4 bi-bootstrap"></i> <span className="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                                <ul className="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                    <li className="w-100">
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                <a href="#" className="nav-link align-middle px-0 text-white">
+                                    <i className="fs-4 bi-box-arrow-right"></i> <span className="ms-1 d-none d-sm-inline">Logout</span>
+                                </a>
                             </li>
                         </ul>
                         <hr />
                     </div>
                 </div>
-                <div className="col py-3">
-                    Content area...
+                <div className="col p-0" >
+                    <div className="container p-0">
+                        <Header />
+                    </div>
+                    <div>
+                        <MainContent />
+                    </div>
+                    <div>
+                        <Footer />
+                    </div>
                 </div>
+                {/* <MainContent />
+                <Footer /> */}
             </div>
         </div>
-    )
+    );
 }
