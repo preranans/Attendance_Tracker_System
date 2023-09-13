@@ -78,6 +78,36 @@ export default function Table() {
               )}
             </td>
           </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>Peri</td>
+            <td>116</td>
+            <td>
+              {show && (
+                <>
+                  <button
+                    type="button"
+                    class="btn btn-success m-2"
+                    onClick={handlePresent}
+                  >
+                    Present
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    onClick={handleAbsent}
+                  >
+                    Absent
+                  </button>
+                </>
+              )}
+              {marked && (
+                <button type="button" class="btn btn-primary">
+                  Marked
+                </button>
+              )}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
