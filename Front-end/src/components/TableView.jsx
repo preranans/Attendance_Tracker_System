@@ -41,9 +41,9 @@ export default function TableView() {
             <td>Peri</td>
             <td>116</td>
             <td>6b</td>
-            <td>20</td>
-            <td>69</td>
-            <td>22.47</td>
+            <td>63</td>
+            <td>64</td>
+            <td>78.00</td>
           </tr>
         </tbody>
       </table>

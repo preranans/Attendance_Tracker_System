@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import ViewAttendance from "./components/ViewAttendance.jsx";
 import MarkAttendance from "./components/MarkAttendance.jsx";
+import AddStudent from "./components/AddStudent";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/viewattendance" element={<ViewAttendance />}></Route>
         <Route path="/markattendance" element={<MarkAttendance />}></Route>
+        <Route path='/addstudent' element={<AddStudent />}></Route>
       </Routes>
     </BrowserRouter>
   );

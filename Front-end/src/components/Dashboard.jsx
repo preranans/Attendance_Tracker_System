@@ -1,7 +1,6 @@
 import React from "react";
 import "./../../bootstrap-icons/font/bootstrap-icons.min.css";
 import Header from "./Header";
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import MainContent from "./MainContent";
 import Sidebar from "./Sidebar";
