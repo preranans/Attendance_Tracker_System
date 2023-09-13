@@ -64,10 +64,11 @@ export default function Sidebar() {
           </li>
           <li className="nav-item">
             <Link to="/addstudent" className="nav-link align-middle px-0 text-white">
-              <i className="fs-4 bi-house"></i>{" "}
+              <i className="fs-4 bi-person-plus"></i>{" "}
               <span className="ms-1 d-none d-sm-inline">Add Student</span>
             </Link>
           </li>
+
           <li>
             <a href="#" className="nav-link align-middle px-0 text-white">
               <i className="fs-4 bi-box-arrow-right"></i>{" "}
