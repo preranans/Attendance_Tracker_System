@@ -66,7 +66,7 @@ function Login() {
             {" "}
             Log in
           </button>
-          <input type="checkbox" name="checkbox1" />
+          <input type="checkbox" name="checkbox1" required />
           <label for="checkbox1">
             {" "}
             <br></br> I agree to the terms and policies
