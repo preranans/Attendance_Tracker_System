@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Footer() {
   const styles = {
-    possition: "relative",
+    possition: "fixed",
     bottom: "0px",
     top: "1000px",
-    backgroundColor: "grey",
-    color: "white",
+    backgroundColor: "#ccb3ff",
+    color: "black",
     width: "100%",
   };
   return (
