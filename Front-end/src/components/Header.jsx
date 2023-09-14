@@ -21,7 +21,7 @@ export default function Header() {
     height: "180 px",
   };
   const contBack = {
-    backgroundColor: "grey",
+    backgroundColor: "#ccb3ff",
     height: "100px",
     paddingLeft: "0px",
   };

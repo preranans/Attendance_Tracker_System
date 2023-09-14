@@ -1,7 +1,12 @@
 import React from "react";
 import "./../../bootstrap-icons/font/bootstrap-icons.min.css";
 import { Link } from "react-router-dom";
-
+const handleLogout = () => {
+  axios.get('http://localhost:8081/logout')
+    .then(res => {
+      navigate('/Login')
+    }).catch(err => console.log(err));
+}
 export default function Sidebar() {
   return (
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -69,7 +74,7 @@ export default function Sidebar() {
             </Link>
           </li>
 
-          <li>
+          <li onClick={handleLogout}>
             <a href="#" className="nav-link align-middle px-0 text-white">
               <i className="fs-4 bi-box-arrow-right"></i>{" "}
               <span className="ms-1 d-none d-sm-inline">Logout</span>
