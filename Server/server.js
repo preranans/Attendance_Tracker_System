@@ -55,7 +55,7 @@ app.post("/login", (req, res) => {
 
 app.post("/query", (req, res) => {
   const sql = "SELECT * FROM Student WHERE class = ? AND section = ?";
-  con.query(sql, [req.body.class_Name, req.body.section], (err, result) => {
+  con.query(sql, [req.body.semester, req.body.section], (err, result) => {
     if (err) {
       return res.json({
         Status: "Error",

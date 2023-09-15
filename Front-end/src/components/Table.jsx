@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Table() {
   const [values, setValues] = useState({
-    class_Name: 0,
+    semester: 0,
     section: "",
   });
 
@@ -31,16 +31,18 @@ export default function Table() {
               class="form-control mr-sm-2 "
               type="search"
               placeholder="Enter Class"
+              name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
-                setValues({ ...values, class_Name: e.target.value.Number });
+                setValues({ ...values, semester: e.target.value.Number });
               }}
             />
             <input
               class="form-control mr-sm-2 my-3"
               type="search"
               placeholder="Enter Section"
+              name="section"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
