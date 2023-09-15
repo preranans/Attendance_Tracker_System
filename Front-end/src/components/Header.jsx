@@ -26,7 +26,7 @@ export default function Header() {
     paddingLeft: "0px",
   };
   return (
-    <div class="responsive">
+    <div className="responsive">
       <div className="col py-0" style={contBack}>
         <div className="p-1 d-flex" style={styles}>
           <span>

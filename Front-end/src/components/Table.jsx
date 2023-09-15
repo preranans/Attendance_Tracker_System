@@ -15,6 +15,7 @@ export default function Table() {
     axios
       .post("http://localhost:8081/query", values)
       .then((res) => {
+        console.log(res);
         setResult(res.data);
       })
       .catch((err) => {
@@ -35,7 +36,7 @@ export default function Table() {
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
-                setValues({ ...values, semester: e.target.value.Number });
+                setValues({ ...values, semester: Number(e.target.value) });
               }}
             />
             <input
@@ -71,7 +72,7 @@ export default function Table() {
           </thead>
           <tbody>
             {result.map((result) => {
-              <Table_List data={result} />;
+              <Table_List key={result.USN} data1={result} />;
             })}
           </tbody>
         </table>

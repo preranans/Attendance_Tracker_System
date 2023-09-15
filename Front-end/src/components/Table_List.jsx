@@ -17,10 +17,10 @@ export default function Table_List(props) {
     setMarked(true);
   };
   return (
-    <tr key={props.data.usn}>
+    <tr key={props.key}>
       <th scope="row">1</th>
-      <td>{props.data.name}</td>
-      <td>{props.data.usn}</td>
+      <td>{props.data1.Name}</td>
+      <td>{props.data1.USN}</td>
       <td>
         {show && (
           <>
@@ -41,7 +41,7 @@ export default function Table_List(props) {
           </>
         )}
         {marked && (
-          <button type="button" classNameName="btn btn-primary">
+          <button type="button" className="btn btn-primary">
             Marked
           </button>
         )}
