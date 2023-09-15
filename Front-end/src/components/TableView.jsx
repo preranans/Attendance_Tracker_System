@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TableView() {
+  const [values, setValues] = useState({
+    class_Name: 0,
+    section: "",
+  });
   return (
     <div class="table-responsive">
       <h2>View Attendance by </h2>
@@ -10,7 +14,14 @@ export default function TableView() {
             <input
               class="form-control mr-sm-2 "
               type="search"
-              placeholder="Search"
+              placeholder="Enter class"
+              aria-label="Search"
+              style={{ maxWidth: "25%" }}
+            />
+            <input
+              class="form-control mr-sm-2 "
+              type="search"
+              placeholder="Enter section"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
             />
