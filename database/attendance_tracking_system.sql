@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 09:31 AM
+-- Generation Time: Sep 15, 2023 at 09:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,12 +42,43 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Name`, `USN`, `Class`, `No_Present`, `No_Absent`, `Percentage`, `Section`) VALUES
+('Akshay', '1JS20CS002', 7, 0, 0, 0, 'A'),
+('Bhoomi', '1JS20CS005', 7, 0, 0, 0, 'B'),
+('Aditya', '1JS20CS007', 8, 0, 0, 0, 'A'),
+('Arpita', '1JS20CS010', 7, 0, 0, 0, 'A'),
+('Abhinaya', '1JS20CS011', 8, 0, 0, 0, 'A'),
+('Kashish', '1JS20CS017', 8, 0, 0, 0, 'B'),
+('Nithin', '1JS20CS019', 8, 0, 0, 0, 'B'),
+('Sinchana', '1JS20CS020', 8, 0, 0, 0, 'C'),
+('Chandana', '1JS20CS101', 7, 0, 0, 0, 'B'),
+('Rahul', '1JS20CS110', 7, 0, 0, 0, 'C'),
+('Sindhoor', '1JS20CS166', 7, 0, 0, 0, 'C'),
+('Sumukh', '1JS20CS176', 8, 0, 0, 0, 'C'),
+('Ayesha', '1JS21CS001', 6, 0, 0, 0, 'A'),
+('Asha', '1JS21CS002', 5, 0, 0, 0, 'A'),
+('Ahmed', '1JS21CS010', 6, 0, 0, 0, 'A'),
+('Karan', '1JS21CS011', 6, 0, 0, 0, 'A'),
+('Debalina', '1JS21CS030', 5, 0, 0, 0, 'A'),
+('Keerthi', '1JS21CS101', 5, 0, 0, 0, 'B'),
+('Lavanya', '1JS21CS110', 5, 0, 0, 0, 'B'),
+('Narayan', '1JS21CS111', 5, 0, 0, 0, 'C'),
+('Prerana', '1JS21CS116', 6, 0, 0, 0, 'B'),
+('Saakshi', '1JS21CS118', 6, 0, 0, 0, 'C'),
+('Pooja', '1JS21CS130', 6, 0, 0, 0, 'B'),
+('Sumanth', '1JS21CS132', 6, 0, 0, 0, 'C'),
+('Mohammed', '1JS21CS144', 5, 0, 0, 0, 'C'),
 ('Bindu', '1JS22CS006', 3, 0, 0, 0, 'A'),
+('Chiranth', '1JS22CS007', 4, 0, 0, 0, 'A'),
 ('Nishchitha', '1JS22CS019', 3, 0, 0, 0, 'B'),
+('Deepika', '1JS22CS020', 4, 0, 0, 0, 'A'),
+('Kruthik', '1JS22CS050', 4, 0, 0, 0, 'B'),
 ('Bhuvan', '1JS22CS100', 3, 0, 0, 0, 'A'),
+('Prajwal', '1JS22CS110', 4, 0, 0, 0, 'B'),
 ('Kavya', '1JS22CS116', 3, 0, 0, 0, 'B'),
+('Priyanka', '1JS22CS118', 4, 0, 0, 0, 'C'),
 ('Shanaya', '1JS22CS130', 3, 0, 0, 0, 'C'),
 ('Zoya', '1JS22CS131', 3, 0, 0, 0, 'C'),
+('Sadhvi', '1JS22CS150', 4, 0, 0, 0, 'C'),
 ('Aradhya', '1JS23CS001', 1, 0, 0, 0, 'A'),
 ('Harshitha', '1JS23CS002', 2, 0, 0, 0, 'A'),
 ('Kapil', '1JS23CS010', 1, 0, 0, 0, 'A'),
