@@ -17,10 +17,10 @@ export default function Table_List(props) {
     setMarked(true);
   };
   return (
-    <tr key={props.key}>
-      <th scope="row">1</th>
-      <td>{props.data1.Name}</td>
-      <td>{props.data1.USN}</td>
+    <tr>
+      <th scope="row">{props.index + 1}</th>
+      <td>{props.Name}</td>
+      <td>{props.USN}</td>
       <td>
         {show && (
           <>
