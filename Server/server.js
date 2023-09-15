@@ -35,7 +35,7 @@ app.post("/login", (req, res) => {
     if (err)
       return res.json({
         Status: "Error",
-        Error: "Error in runnig query" + err,
+        Error: "Error in running query" + err,
       });
     if (result.length > 0) {
       // const id = result[0].id;
