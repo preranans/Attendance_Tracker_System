@@ -1,62 +1,62 @@
-import React from 'react'
+import React from 'react';
 
 export default function Student_Details() {
     const styles = {
-        paddingLeft: '60px',
-        paddingRight: '60px',
-        paddingTop: '10px',
-        paddingBottom: '10px',
+        padding: '5px', // Reduce padding
         border: '2px solid black',
-        margin: '30px',
+        margin: '5px', // Reduce margin
+    };
 
-    }
     return (
         <div>
             <br></br>
             <h3>Enter Student Details</h3>
             <div className="container" style={styles}>
                 <form>
-                    <div class="form-group container mt-4">
-                        <label for="formGroupExampleInput">Student Name </label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Student Name" />
+                    <div className="form-group mt-2">
+                        <label htmlFor="studentName">Student Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="studentName"
+                            placeholder="Student Name"
+                        />
                     </div>
-                    <div class="form-group container mt-4">
-                        <label for="formGroupExampleInput">Student USN </label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Student USN" />
+                    <div className="form-group mt-2">
+                        <label htmlFor="studentUSN">Student USN</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="studentUSN"
+                            placeholder="Student USN"
+                        />
                     </div>
-                    <div class="container mt-4">
-
-                        <div class="form-group">
-                            <label for="exampleDropdown">Select Semester</label>
-                            <select class="form-control" id="exampleDropdown " placeholder="Select Semester">
-                                <option value="option1"> 1</option>
-                                <option value="option2"> 2</option>
-                                <option value="option3"> 3</option>
-                                <option value="option4"> 4</option>
-                                <option value="option1"> 5</option>
-                                <option value="option2"> 6</option>
-                                <option value="option3"> 7</option>
-                                <option value="option4"> 8</option>
-                            </select>
-                        </div>
+                    <div className="form-group mt-2">
+                        <label htmlFor="semester">Select Semester</label>
+                        <select className="form-control" id="semester">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
                     </div>
-                    <div class="container mt-4 ">
-
-                        <div class="form-group">
-                            <label for="exampleDropdown">Select Section</label>
-                            <select class="form-control" id="exampleDropdown" placeholder="Select Section">
-                                <option value="option1"> A</option>
-                                <option value="option2"> B</option>
-                                <option value="option3"> C</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-4">
-                            Submit
-                        </button>
+                    <div className="form-group mt-2">
+                        <label htmlFor="section">Select Section</label>
+                        <select className="form-control" id="section">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
                     </div>
+                    <button type="submit" className="btn btn-primary mt-3">
+                        Submit
+                    </button>
                 </form>
             </div>
-
         </div>
-    )
+    );
 }

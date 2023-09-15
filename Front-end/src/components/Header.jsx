@@ -4,37 +4,29 @@ import image from "./../Imagess/logo.png";
 
 export default function Header() {
   const styles = {
-    height: "50px",
-    width: "100%",
     fontFamily: "cursive",
-    fontSize: "50px",
-    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Add a subtle text shadow
-    color: "black", // Set the text color
+    fontSize: "30px",
+    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    padding: "10px",
+    backgroundColor: "#360975",
     justifyContent: "center",
   };
-  // const st = {
-  //     display: 'relative',
-  //     height:
-  // }
-  const imgstyle = {
-    width: "120px",
-    height: "180 px",
+
+  const imgStyle = {
+    width: "80px",
+    height: "80px",
+    marginRight: "20px",
   };
-  const contBack = {
-    backgroundColor: "#ccb3ff",
-    height: "100px",
-    paddingLeft: "0px",
-  };
+
   return (
-    <div className="responsive">
-      <div className="col py-0" style={contBack}>
-        <div className="p-1 d-flex" style={styles}>
-          <span>
-            <img src={image} style={imgstyle} />
-          </span>
-          Attendance Tracker System
-        </div>
-      </div>
+    <div style={styles}>
+      <img src={image} alt="Logo" style={imgStyle} />
+      <span style={{ fontFamily: "cursive", fontSize: "36px" }}>
+        Attendance Tracker System
+      </span>
     </div>
   );
 }

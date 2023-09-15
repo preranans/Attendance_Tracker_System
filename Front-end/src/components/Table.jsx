@@ -30,14 +30,14 @@ export default function Table() {
   };
   return (
     <div className="table-responsive">
-      <h1>Mark Attendance</h1>
+      <h3>Mark Attendance</h3>
       <div className="m-2 p-3">
         <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
           <span>
             <input
               className="form-control mr-sm-2 "
               type="search"
-              placeholder="Enter className"
+              placeholder="Enter Class Name"
               name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
@@ -72,7 +72,7 @@ export default function Table() {
         </form>
       </div>
       <div className="error">
-        <h1>{error && "No records found"}</h1>
+        <h6>{error && "No records found"}</h6>
       </div>
       {result.length > 0 && (
         <table className="table table-bordered">
