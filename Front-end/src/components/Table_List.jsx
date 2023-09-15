@@ -26,18 +26,22 @@ export default function Table_List(props) {
           <>
             <button
               type="button"
-              class="btn btn-success m-2"
+              className="btn btn-success m-2"
               onClick={handlePresent}
             >
               Present
             </button>
-            <button type="button" class="btn btn-danger" onClick={handleAbsent}>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleAbsent}
+            >
               Absent
             </button>
           </>
         )}
         {marked && (
-          <button type="button" class="btn btn-primary">
+          <button type="button" classNameName="btn btn-primary">
             Marked
           </button>
         )}
