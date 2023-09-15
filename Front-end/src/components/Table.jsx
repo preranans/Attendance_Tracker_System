@@ -22,15 +22,15 @@ export default function Table() {
       });
   };
   return (
-    <div class="table-responsive">
+    <div className="table-responsive">
       <h1>Mark Attendance</h1>
-      <div class="m-2 p-3">
-        <form class="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
+      <div className="m-2 p-3">
+        <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
           <span>
             <input
-              class="form-control mr-sm-2 "
+              className="form-control mr-sm-2 "
               type="search"
-              placeholder="Enter Class"
+              placeholder="Enter className"
               name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
@@ -39,7 +39,7 @@ export default function Table() {
               }}
             />
             <input
-              class="form-control mr-sm-2 my-3"
+              className="form-control mr-sm-2 my-3"
               type="search"
               placeholder="Enter Section"
               name="section"
@@ -52,7 +52,7 @@ export default function Table() {
           </span>
 
           <button
-            class="btn btn-outline-success my-2 my-sm-0 p-2"
+            className="btn btn-outline-success my-2 my-sm-0 p-2"
             type="submit"
           >
             Search
@@ -60,7 +60,7 @@ export default function Table() {
         </form>
       </div>
       {result.length > 0 && (
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">No</th>
