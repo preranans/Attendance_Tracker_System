@@ -6,13 +6,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const app = express();
-app.use(cors());
-/*{
-    origin: ["http://localhost:5173"],
-    methods: ["POST", "GET", "PUT"],
-    credentials: true
-}
-*/
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("public"));
@@ -68,6 +68,36 @@ app.post("/query", (req, res) => {
       return res.json({ Status: "Error", Error: "No records found" });
     }
   });
+});
+
+app.post("/update", (req, res) => {
+  const id = req.body.id;
+  const isPresent = req.body.Present;
+  const sql1 = "UPDATE Student SET No_Present=No_Present+1 WHERE USN = ?";
+  const sql2 = "UPDATE Student SET No_Absent=No_Absent+1 WHERE USN = ?";
+  if (isPresent) {
+    con.query(sql1, [id], (err, result) => {
+      if (err) {
+        return res.json({
+          Status: "Error",
+          Error: "Unable to update due to " + err,
+        });
+      }
+      return res.json(result);
+    });
+  } else {
+    con.query(sql2, [id], (err, result) => {
+      if (err) {
+        return res.json({
+          Status: "Error",
+          Error: "Unable to update due to " + err,
+        });
+      }
+      return res.json(result);
+    });
+  }
+  const sql3 = "SELECT No_Present from Student where id= ?";
+  const sql4 = "SELECT No_Absent from Student where id=?";
 });
 
 app.listen(8081, () => {

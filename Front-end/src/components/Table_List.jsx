@@ -1,26 +1,61 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function Table_List(props) {
   const [show, setShow] = useState(true);
   const [marked, setMarked] = useState(false);
-  const [isPresent, setIsPresent] = useState(false); // This is a flag to identify if a student is present or not
+  // const [isPresent, setIsPresent] = useState(false); // This is a flag to identify if a student is present or not
   const handlePresent = () => {
     //use axios to upload to backend
-    setIsPresent(true);
+    // setIsPresent(true);
     setShow(false);
     setMarked(true);
+    axios
+      .post(
+        "http://localhost:8081/update",
+        {
+          id: props.data.USN,
+          Present: true,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const handleAbsent = () => {
     //use axios to upload to backend
-    setIsPresent(false);
+    // setIsPresent(false);
     setShow(false);
     setMarked(true);
+    axios
+      .post(
+        "http://localhost:8081/update",
+        {
+          id: props.data.USN,
+          Present: false,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
-    <tr>
-      <th scope="row">{props.index + 1}</th>
-      <td>{props.Name}</td>
-      <td>{props.USN}</td>
+    <tr key={props.data.USN}>
+      <th scope="row">{props.index}</th>
+      <td>{props.data.Name}</td>
+      <td>{props.data.USN}</td>
       <td>
         {show && (
           <>
