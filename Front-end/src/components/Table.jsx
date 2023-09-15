@@ -28,6 +28,7 @@ export default function Table() {
         console.log(err);
       });
   };
+
   return (
     <div className="table-responsive">
       <h3>Mark Attendance</h3>
@@ -37,7 +38,7 @@ export default function Table() {
             <input
               className="form-control mr-sm-2 "
               type="search"
-              placeholder="Enter Class Name"
+              placeholder="Enter Semester Number"
               name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}

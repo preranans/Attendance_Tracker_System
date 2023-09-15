@@ -5,10 +5,10 @@ export default function TableView() {
     className_Name: 0,
     section: "",
   });
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
   return (
     <div className="table-responsive">
-      <h2>View Attendance by </h2>
+      <h3>View Attendance</h3>
       <div className="m-2 p-3">
         <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
           <span>
