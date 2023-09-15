@@ -32,14 +32,14 @@ export default function Table() {
   };
   return (
     <div className="table-responsive">
-      <h2>Mark Attendance</h2>
+      <h3>Mark Attendance</h3>
       <div className="m-2 p-3">
         <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
           <span>
             <input
               className="form-control mr-sm-2 "
               type="search"
-              placeholder="Enter className"
+              placeholder="Enter Semester"
               name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
