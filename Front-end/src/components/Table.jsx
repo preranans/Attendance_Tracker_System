@@ -8,6 +8,8 @@ export default function Table() {
     section: "",
   });
 
+  const [error, setError] = useState(false);
+
   const [result, setResult] = useState([]);
 
   const handleSubmit = (event) => {
@@ -15,8 +17,12 @@ export default function Table() {
     axios
       .post("http://localhost:8081/query", values)
       .then((res) => {
+        if (res.data.Status == "Error") {
+          setError(true);
+        } else {
+          setResult(res.data);
+        }
         console.log(res);
-        setResult(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -38,6 +44,7 @@ export default function Table() {
               onChange={(e) => {
                 setValues({ ...values, semester: Number(e.target.value) });
               }}
+              required
             />
             <input
               className="form-control mr-sm-2 my-3"
@@ -47,8 +54,12 @@ export default function Table() {
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
-                setValues({ ...values, section: e.target.value });
+                setValues({
+                  ...values,
+                  section: e.target.value.toLocaleUpperCase(),
+                });
               }}
+              required
             />
           </span>
 
@@ -59,6 +70,9 @@ export default function Table() {
             Search
           </button>
         </form>
+      </div>
+      <div className="error">
+        <h1>{error && "No records found"}</h1>
       </div>
       {result.length > 0 && (
         <table className="table table-bordered">
@@ -71,8 +85,15 @@ export default function Table() {
             </tr>
           </thead>
           <tbody>
-            {result.map((result) => {
-              <Table_List key={result.USN} data1={result} />;
+            {result.map((res, index) => {
+              return (
+                <Table_List
+                  key={res.USN}
+                  Name={res.Name}
+                  USN={res.USN}
+                  index={index}
+                />
+              );
             })}
           </tbody>
         </table>
