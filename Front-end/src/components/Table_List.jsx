@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Table_List() {
+export default function Table_List(props) {
   const [show, setShow] = useState(true);
   const [marked, setMarked] = useState(false);
   const [isPresent, setIsPresent] = useState(false); // This is a flag to identify if a student is present or not
@@ -17,10 +17,10 @@ export default function Table_List() {
     setMarked(true);
   };
   return (
-    <tr>
+    <tr key={props.data.usn}>
       <th scope="row">1</th>
-      <td>Peri</td>
-      <td>116</td>
+      <td>{props.data.name}</td>
+      <td>{props.data.usn}</td>
       <td>
         {show && (
           <>

@@ -4,16 +4,18 @@ import axios from "axios";
 
 export default function Table() {
   const [values, setValues] = useState({
-    class_Name: null,
+    class_Name: 0,
     section: "",
   });
+
+  const [result, setResult] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:8081/query", values)
       .then((res) => {
-        console.log(res);
+        setResult(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -32,7 +34,7 @@ export default function Table() {
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
-                setValues({ ...values, class_Name: e.target.value });
+                setValues({ ...values, class_Name: e.target.value.Number });
               }}
             />
             <input
@@ -55,20 +57,23 @@ export default function Table() {
           </button>
         </form>
       </div>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">Name </th>
-            <th scope="col">USN</th>
-            <th scope="col">Attendance</th>
-          </tr>
-        </thead>
-        <tbody>
-          <Table_List />
-          <Table_List />
-        </tbody>
-      </table>
+      {result.length > 0 && (
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name </th>
+              <th scope="col">USN</th>
+              <th scope="col">Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {result.map((result) => {
+              <Table_List data={result} />;
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
