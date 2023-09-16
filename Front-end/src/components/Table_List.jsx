@@ -4,10 +4,8 @@ import axios from "axios";
 export default function Table_List(props) {
   const [show, setShow] = useState(true);
   const [marked, setMarked] = useState(false);
-  // const [isPresent, setIsPresent] = useState(false); // This is a flag to identify if a student is present or not
+
   const handlePresent = () => {
-    //use axios to upload to backend
-    // setIsPresent(true);
     setShow(false);
     setMarked(true);
     axios
@@ -28,9 +26,8 @@ export default function Table_List(props) {
         console.log(err);
       });
   };
+
   const handleAbsent = () => {
-    //use axios to upload to backend
-    // setIsPresent(false);
     setShow(false);
     setMarked(true);
     axios
@@ -51,6 +48,7 @@ export default function Table_List(props) {
         console.log(err);
       });
   };
+
   return (
     <tr key={props.data.USN}>
       <th scope="row">{props.index}</th>

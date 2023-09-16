@@ -9,7 +9,6 @@ export default function Table() {
   });
 
   const [error, setError] = useState(false);
-
   const [result, setResult] = useState([]);
 
   const handleSubmit = (event) => {
@@ -30,19 +29,38 @@ export default function Table() {
         console.log(err);
       });
   };
+
+  const tableStyle = {
+    background: "linear-gradient(to bottom, #cde6cb, #b1d8b7)",
+    border: "1px solid #007bff",
+  };
+
+  const headerStyle = {
+    backgroundColor: "#007bff",
+    color: "white",
+  };
+
+  const evenRowStyle = {
+    backgroundColor: "#cde6cb",
+  };
+
+  const oddRowStyle = {
+    backgroundColor: "#b1d8b7",
+  };
+
   return (
     <div className="table-responsive">
       <h3>Mark Attendance</h3>
       <div className="m-2 p-3">
         <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
-          <span>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <input
               className="form-control mr-sm-2 "
               type="search"
               placeholder="Enter Semester"
               name="semester"
               aria-label="Search"
-              style={{ maxWidth: "25%" }}
+              style={{ maxWidth: "25%", marginRight: "50px" }}
               onChange={(e) => {
                 setValues({ ...values, semester: Number(e.target.value) });
               }}
@@ -63,8 +81,7 @@ export default function Table() {
               }}
               required
             />
-          </span>
-
+          </div>
           <button
             className="btn btn-outline-success my-2 my-sm-0 p-2"
             type="submit"
@@ -78,11 +95,11 @@ export default function Table() {
           <h6>No Records found</h6>
         ) : (
           result.length > 0 && (
-            <table className="table table-bordered">
-              <thead>
+            <table className="table table-bordered table-striped " style={tableStyle}>
+              <thead style={headerStyle}>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Name </th>
+                  <th scope="col">Name</th>
                   <th scope="col">USN</th>
                   <th scope="col">Attendance</th>
                 </tr>
@@ -90,13 +107,18 @@ export default function Table() {
               <tbody>
                 {result.map((res, index) => {
                   return (
-                    <Table_List key={res.USN} data={res} index={index + 1} />
+                    <Table_List
+                      key={res.USN}
+                      data={res}
+                      index={index + 1}
+                      class_Name={index % 2 === 0 ? "even-row" : "odd-row"}
+                    />
                   );
                 })}
               </tbody>
             </table>
           )
-        )}{" "}
+        )}
       </div>
     </div>
   );
