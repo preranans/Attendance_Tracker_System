@@ -96,8 +96,103 @@ app.post("/update", (req, res) => {
       return res.json(result);
     });
   }
-  const sql3 = "SELECT No_Present from Student where id= ?";
-  const sql4 = "SELECT No_Absent from Student where id=?";
+});
+
+app.post("/updatePercentage", (req, res) => {
+  console.log("Received the request at /updatePercentage");
+  const id = req.body.id;
+  const percentage = req.body.percentage;
+  console.log(id);
+  console.log(percentage);
+  const sql3 = "UPDATE Student SET Percentage = CAST(? AS DOUBLE) WHERE USN=?";
+
+  con.query(sql3, [percentage, id], (err, result) => {
+    if (err) {
+      return res.json({
+        Status: "Error",
+        Error: "Unable to update due to " + err,
+      });
+    }
+    // Check for SQL warnings
+    const warn = "SHOW WARNINGS";
+    con.query(warn, (warningErr, warnings) => {
+      if (warningErr) {
+        return res.json({
+          Status: "Error",
+          Error: "Unable to retrieve warnings due to " + warningErr,
+        });
+      }
+
+      // Include warnings in the response
+      const response = {
+        Status: "Success",
+        Result: result,
+        Warnings: warnings,
+      };
+      // console.log(response);
+
+      return res.json(response);
+    });
+  });
+});
+
+// const mysql = require("mysql2/promise");
+
+// // Assuming you have already created a connection pool
+// const pool = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "Attendance_Tracking_System",
+// });
+
+// app.post("/updatePercentage", async (req, res) => {
+//   console.log("Received the request at /updatePercentage");
+//   const id = req.body.id;
+//   const percentage = req.body.precent;
+//   const sql3 = "UPDATE Student SET Percentage = CAST(? AS DOUBLE) WHERE USN=?";
+
+//   try {
+//     const [result] = await pool.execute(sql3, [percentage, id]);
+
+//     // Retrieve warnings
+//     const [rows] = await pool.execute("SHOW WARNINGS");
+//     const warnings = rows.map((row) => row.Message);
+
+//     const response = {
+//       Status: "Success",
+//       Result: result,
+//       Warnings: warnings,
+//     };
+
+//     return res.json(response);
+//   } catch (err) {
+//     return res.json({
+//       Status: "Error",
+//       Error: "Unable to update due to " + err.message,
+//     });
+//   }
+// });
+
+app.post("/addStudent", (req, res) => {
+  const { Name, USN, semester, section } = req.body;
+  console.log("Receiving at addstudent");
+  const insert = "INSERT INTO Student(Name,USN,Class, Section) VALUES(?,?,?,?)";
+  const values = [Name, USN, semester, section];
+  console.log(Name);
+  console.log(section);
+  console.log(USN);
+  console.log(semester);
+
+  con.query(insert, values, (err, result) => {
+    if (err) {
+      return res.json({
+        Status: "Error",
+        Error: "Values not inserted to database" + err,
+      });
+    }
+    return res.json(result);
+  });
 });
 
 app.listen(8081, () => {

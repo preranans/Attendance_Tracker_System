@@ -30,22 +30,28 @@ export default function Table() {
         console.log(err);
       });
   };
+
   return (
     <div className="table-responsive">
       <h3>Mark Attendance</h3>
       <div className="m-2 p-3">
-        <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
+        <form
+          className="form-inline my-2 my-lg-0 "
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           <span>
             <input
               className="form-control mr-sm-2 "
               type="search"
-              placeholder="Enter Semester"
+              placeholder="Enter Semester Number"
               name="semester"
               aria-label="Search"
               style={{ maxWidth: "25%" }}
               onChange={(e) => {
                 setValues({ ...values, semester: Number(e.target.value) });
               }}
+              autoComplete="off"
               required
             />
             <input
@@ -61,6 +67,7 @@ export default function Table() {
                   section: e.target.value.toLocaleUpperCase(),
                 });
               }}
+              autoComplete="off"
               required
             />
           </span>
