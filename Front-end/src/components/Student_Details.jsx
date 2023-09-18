@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Alert from "./Alert";
 export default function Student_Details() {
   // const styles = {
   //   padding: "5px", // Reduce padding
@@ -54,12 +55,36 @@ export default function Student_Details() {
     section: "A",
   });
 
+  const [alert, setAlert] = useState({
+    message: "",
+    status: "",
+  });
+
+  const [error, setError] = useState(0);
+
+  const showAlert = (msg, type) => {
+    setAlert({
+      message: msg,
+      status: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:8081/addStudent", values)
       .then((res) => {
         console.log(res);
+        if (res.data.Status === "Error") {
+          setError(0);
+          showAlert("USN already exists", "danger");
+        } else {
+          setError(1);
+          showAlert("Inserted to database", "success");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -68,6 +93,7 @@ export default function Student_Details() {
 
   return (
     <div>
+      <Alert alert={alert} />
       <br></br>
       <h3 style={headingStyle}>Enter Student Details</h3>
       <div className="container" style={containerStyle}>
