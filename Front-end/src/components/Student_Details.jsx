@@ -112,6 +112,7 @@ export default function Student_Details() {
                 setValues({ ...values, Name: e.target.value });
               }}
               autoComplete="name"
+              required
             />
           </div>
           <div className="form-group mt-2">
@@ -128,6 +129,7 @@ export default function Student_Details() {
                 setValues({ ...values, USN: e.target.value });
               }}
               autoComplete="usn"
+              required
             />
           </div>
           <div className="form-group mt-2">
