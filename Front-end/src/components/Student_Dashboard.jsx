@@ -1,21 +1,23 @@
 import React from "react";
-import "../../bootstrap-icons/font/bootstrap-icons.min.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import Sidebar from "./Sidebar";
-import TableView from "./TableView";
+import MainContent from "./MainContent";
+import Sidebar_Student from "./Sidebar_Student";
 
-export default function ViewAttendance() {
+export default function Student_Dashboard(props) {
+  const values = props.location?.state?.USN;
+
+  console.log(values);
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <Sidebar />
+        <Sidebar_Student USN={values} />
         <div className="col p-0">
-          <div className="container p-0">
+          <div className="container p-0 m-0">
             <Header />
           </div>
           <div>
-            <TableView />
+            <MainContent />
           </div>
           <div>
             <Footer />

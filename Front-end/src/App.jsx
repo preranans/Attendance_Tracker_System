@@ -8,6 +8,10 @@ import Dashboard from "./components/Dashboard";
 import ViewAttendance from "./components/ViewAttendance.jsx";
 import MarkAttendance from "./components/MarkAttendance.jsx";
 import AddStudent from "./components/AddStudent";
+import Start from "./components/Start";
+import Student_Login from "./components/Student_Login";
+import Student_Dashboard from "./components/Student_Dashboard";
+import ViewAttendanceStudent from "./components/ViewAttendanceStudent";
 
 function App() {
   return (
@@ -17,7 +21,14 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/viewattendance" element={<ViewAttendance />}></Route>
         <Route path="/markattendance" element={<MarkAttendance />}></Route>
-        <Route path='/addstudent' element={<AddStudent />}></Route>
+        <Route path="/addstudent" element={<AddStudent />}></Route>
+        <Route path="/start" element={<Start />}></Route>
+        <Route path="/studentlogin" element={<Student_Login />}></Route>
+        <Route path="/studentdashboard" element={<Student_Dashboard />}></Route>
+        <Route
+          path="/viewattendancestudent"
+          element={<ViewAttendanceStudent />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

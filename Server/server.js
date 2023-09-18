@@ -30,7 +30,7 @@ con.connect(function (err) {
   }
 });
 app.post("/login", (req, res) => {
-  const sql = "SELECT * FROM user Where email = ? AND  password = ?";
+  const sql = "SELECT * FROM user WHERE email = ? AND  password = ?";
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
     if (err)
       return res.json({
@@ -39,9 +39,9 @@ app.post("/login", (req, res) => {
       });
     if (result.length > 0) {
       // const id = result[0].id;
-      // const token = jwt.sign({role: "admin"}, "jwt-secret-key", {expiresIn: '1d'});
-      // res.cookie('token', token);
-      // console.log("Success")
+      // const token = jwt.sign(id, "jwt-secret-key", { expiresIn: "1d" });
+      // res.cookie("token", token);
+      // console.log("Success");
       return res.json({ Status: "Success" });
     } else {
       return res.json({ Status: "Error", Error: "Wrong Email or Password" });
@@ -174,6 +174,24 @@ app.post("/updatePercentage", (req, res) => {
 //   }
 // });
 
+const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ Error: "You are no Authenticated" });
+  } else {
+    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+      if (err) return res.json({ Error: "Token wrong" });
+      // req.role = decoded.role;
+      // req.id = decoded.id;
+      next();
+    });
+  }
+};
+
+app.get("/dashboard", verifyUser, (req, res) => {
+  return res.json({ Status: "Success", role: req.role, id: req.id });
+});
+
 app.post("/addStudent", (req, res) => {
   const { Name, USN, semester, section } = req.body;
   console.log("Receiving at addstudent");
@@ -192,6 +210,24 @@ app.post("/addStudent", (req, res) => {
       });
     }
     return res.json(result);
+  });
+});
+
+app.post("/studentlogin", (req, res) => {
+  console.log("Running in student login ");
+  const sql = "SELECT * FROM Student WHERE USN = ? AND Password = ?";
+  con.query(sql, [req.body.USN, req.body.Password], (err, result) => {
+    if (err) {
+      return res.json({
+        Status: "Error",
+        Error: "Error in running query " + err,
+      });
+    }
+    if (result.length > 0) {
+      return res.json({ Status: "Success" });
+    } else {
+      return res.json({ Status: "Error", Error: "Wrong USN or Password" });
+    }
   });
 });
 
