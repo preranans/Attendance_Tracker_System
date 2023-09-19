@@ -19,7 +19,7 @@ export default function Sidebar_Student(props) {
         >
           <li className="nav-item">
             <Link
-              to="/studentdashboard"
+              to={`/studentdashboard/${USN}`}
               className="nav-link align-middle px-0 text-white"
             >
               <i className="fs-4 bi-house"></i>{" "}
@@ -38,10 +38,7 @@ export default function Sidebar_Student(props) {
           </li> */}
           <li className="nav-item">
             <Link
-              to={{
-                pathname: "/viewattendancestudent",
-                state: { USN },
-              }}
+              to={`/viewattendancestudent/${USN}`}
               className="nav-link align-middle px-0 text-white"
             >
               {" "}

@@ -174,23 +174,23 @@ app.post("/updatePercentage", (req, res) => {
 //   }
 // });
 
-const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ Error: "You are no Authenticated" });
-  } else {
-    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
-      if (err) return res.json({ Error: "Token wrong" });
-      // req.role = decoded.role;
-      // req.id = decoded.id;
-      next();
-    });
-  }
-};
+// const verifyUser = (req, res, next) => {
+//   const token = req.cookies.token;
+//   if (!token) {
+//     return res.json({ Error: "You are no Authenticated" });
+//   } else {
+//     jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+//       if (err) return res.json({ Error: "Token wrong" });
+//       // req.role = decoded.role;
+//       // req.id = decoded.id;
+//       next();
+//     });
+//   }
+// };
 
-app.get("/dashboard", verifyUser, (req, res) => {
-  return res.json({ Status: "Success", role: req.role, id: req.id });
-});
+// app.get("/dashboard", verifyUser, (req, res) => {
+//   return res.json({ Status: "Success", role: req.role, id: req.id });
+// });
 
 app.post("/addStudent", (req, res) => {
   const { Name, USN, semester, section } = req.body;
@@ -215,6 +215,7 @@ app.post("/addStudent", (req, res) => {
 
 app.post("/studentlogin", (req, res) => {
   console.log("Running in student login ");
+  const usn = req.body.USN;
   const sql = "SELECT * FROM Student WHERE USN = ? AND Password = ?";
   con.query(sql, [req.body.USN, req.body.Password], (err, result) => {
     if (err) {
@@ -224,10 +225,25 @@ app.post("/studentlogin", (req, res) => {
       });
     }
     if (result.length > 0) {
-      return res.json({ Status: "Success" });
+      return res.json({ Status: "Success", USN: usn });
     } else {
       return res.json({ Status: "Error", Error: "Wrong USN or Password" });
     }
+  });
+});
+
+app.post("/viewstudent", (req, res) => {
+  console.log("running in usn");
+  // const usn = req.body.USN;
+  const sql = "SELECT * FROM Student WHERE USN = ?";
+  con.query(sql, [req.body.USN], (err, result) => {
+    if (err) {
+      return res.json({
+        Status: "Error",
+      });
+    }
+    console.log(result);
+    return res.json(result);
   });
 });
 

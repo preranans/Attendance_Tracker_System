@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 export default function Student_Login() {
   const [values, setValues] = useState({
     USN: "",
@@ -12,14 +12,14 @@ export default function Student_Login() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const USN = values.USN;
-
+    const state = values.USN;
     axios
       .post("http://localhost:8081/studentlogin", values)
       .then((res) => {
         console.log(res);
         if (res.data.Status === "Success") {
-          navigate("/studentdashboard", { state: USN });
+          navigate(`/viewattendancestudent/${res.data.USN}`);
+          // return <Link to={{ pathname: "/studentdashboard", state }} />;
         } else {
           setError(res.data.Error);
         }

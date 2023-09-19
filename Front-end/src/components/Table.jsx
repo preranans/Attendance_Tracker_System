@@ -4,8 +4,8 @@ import axios from "axios";
 
 export default function Table() {
   const [values, setValues] = useState({
-    semester: 0,
-    section: "",
+    semester: 1,
+    section: "A",
   });
 
   const [error, setError] = useState(false);
@@ -48,48 +48,102 @@ export default function Table() {
     backgroundColor: "#b1d8b7",
   };
 
+  const containerStyle = {
+    padding: "20px",
+    border: "2px solid black",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    maxWidth: "400px",
+    margin: "0 auto",
+    backgroundColor: "white",
+  };
+
+  const headingStyle = {
+    textAlign: "center",
+    fontSize: "24px",
+    color: "black",
+  };
+
+  const labelStyle = {
+    fontWeight: "bold",
+    color: "#555",
+  };
+
+  const selectStyle = {
+    width: "100%",
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    marginTop: "5px",
+  };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "10px",
+    backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    marginTop: "10px",
+    cursor: "pointer",
+  };
+
   return (
     <div className="table-responsive">
       <h3>Mark Attendance</h3>
       <div className="m-2 p-3">
         <form className="form-inline my-2 my-lg-0 " onSubmit={handleSubmit}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <input
-              className="form-control mr-sm-2 "
-              type="search"
-              placeholder="Enter Semester Number"
-              name="semester"
-              aria-label="Search"
-              style={{ maxWidth: "25%", marginRight: "50px" }}
-              onChange={(e) => {
-                setValues({ ...values, semester: Number(e.target.value) });
-              }}
-              autoComplete="off"
-              required
-            />
-            <input
-              className="form-control mr-sm-2 my-3"
-              type="search"
-              placeholder="Enter Section"
-              name="section"
-              aria-label="Search"
-              style={{ maxWidth: "25%" }}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  section: e.target.value.toLocaleUpperCase(),
-                });
-              }}
-              autoComplete="off"
-              required
-            />
+            <div className="form-group m-2">
+              <label htmlFor="semester" style={labelStyle}>
+                Select Semester
+              </label>
+              <select
+                className="form-control"
+                id="semester"
+                name="semester"
+                onChange={(e) => {
+                  setValues({ ...values, semester: Number(e.target.value) });
+                }}
+                autoComplete="semester"
+                style={selectStyle}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </div>
+            <div className="form-group m-2">
+              <label htmlFor="section" style={labelStyle}>
+                Select Section
+              </label>
+              <select
+                className="form-control"
+                id="section"
+                name="section"
+                onChange={(e) => {
+                  setValues({ ...values, section: e.target.value });
+                }}
+                autoComplete="section"
+                style={selectStyle}
+              >
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </div>
+            <button
+              className="btn btn-outline-success my-2 my-sm-0 p-2"
+              type="submit"
+            >
+              Search
+            </button>
           </div>
-          <button
-            className="btn btn-outline-success my-2 my-sm-0 p-2"
-            type="submit"
-          >
-            Search
-          </button>
         </form>
       </div>
       <div>

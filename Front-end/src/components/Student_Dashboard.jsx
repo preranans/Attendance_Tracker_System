@@ -3,15 +3,17 @@ import Header from "./Header";
 import Footer from "./Footer";
 import MainContent from "./MainContent";
 import Sidebar_Student from "./Sidebar_Student";
+import { useParams } from "react-router-dom";
+export default function Student_Dashboard() {
+  // const values = props.location?.state?.value;
 
-export default function Student_Dashboard(props) {
-  const values = props.location?.state?.USN;
-
-  console.log(values);
+  // console.log(props.location?.state);
+  let { USN } = useParams();
+  console.log(USN);
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <Sidebar_Student USN={values} />
+        <Sidebar_Student USN={USN} />
         <div className="col p-0">
           <div className="container p-0 m-0">
             <Header />
