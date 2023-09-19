@@ -25,6 +25,7 @@ export default function Table_List(props) {
       .catch((err) => {
         console.log(err);
       });
+    handlePercentage();
   };
 
   const handleAbsent = () => {
@@ -47,8 +48,32 @@ export default function Table_List(props) {
       .catch((err) => {
         console.log(err);
       });
+    handlePercentage();
   };
 
+  function handlePercentage() {
+    const present = props.data.No_Present;
+    const absent = props.data.No_Absent;
+    const total = present + absent;
+    const percentage = total ? (present / total) * 100.0 : 0.0;
+    axios
+      .post(
+        "http://localhost:8081/updatePercentage",
+        {
+          id: props.data.USN,
+          percentage: percentage,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <tr key={props.data.USN}>
       <th scope="row">{props.index}</th>

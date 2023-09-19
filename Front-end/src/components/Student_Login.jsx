@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import "./../styles.css";
 import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-function Login() {
+import { Link } from "react-router-dom";
+export default function Student_Login() {
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    USN: "",
+    Password: "",
   });
-  const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
-  const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const state = values.USN;
     axios
-      .post("http://localhost:8081/login", values)
-      .then((res) =>
-        // console.log(res)
-        {
-          if (res.data.Status === "Success") {
-            navigate("/");
-          } else {
-            setError(res.data.Error);
-          }
+      .post("http://localhost:8081/studentlogin", values)
+      .then((res) => {
+        console.log(res);
+        if (res.data.Status === "Success") {
+          navigate(`/viewattendancestudent/${res.data.USN}`);
+          // return <Link to={{ pathname: "/studentdashboard", state }} />;
+        } else {
+          setError(res.data.Error);
         }
-      )
-      .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -36,14 +36,14 @@ function Login() {
         <h2>Login</h2>
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Email</strong>
+            <label htmlFor="USN">
+              <strong>USN</strong>
             </label>
             <input
-              type="email"
-              placeholder="Enter Email"
-              name="email"
-              onChange={(e) => setValues({ ...values, email: e.target.value })}
+              type="text"
+              placeholder="Enter USN"
+              name="USN"
+              onChange={(e) => setValues({ ...values, USN: e.target.value })}
               className="form-control rounded-0"
               autoComplete="off"
             />
@@ -57,7 +57,7 @@ function Login() {
               placeholder="Enter Password"
               name="password"
               onChange={(e) =>
-                setValues({ ...values, password: e.target.value })
+                setValues({ ...values, Password: e.target.value })
               }
               className="form-control rounded-0"
             />
@@ -77,5 +77,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
