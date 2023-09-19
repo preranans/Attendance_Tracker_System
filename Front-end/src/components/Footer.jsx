@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   const email = "nsprerana@gmail.com";
-  const phoneNumber = "+917829639815"; // Add your phone number here
+  const phoneNumber = "+91 7829639815"; // Add your phone number here
 
   // Function to open the default email client when the envelope icon is clicked
   const sendEmail = () => {
