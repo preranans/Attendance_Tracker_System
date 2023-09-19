@@ -18,7 +18,7 @@ export default function Table() {
       .then((res) => {
         if (res.data.Status === "Error") {
           setError(true);
-          setResult([]);
+          // setResult([]);
         } else {
           setError(false);
           setResult(res.data);

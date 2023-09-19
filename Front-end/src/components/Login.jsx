@@ -3,11 +3,12 @@ import "./../styles.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
   const [error, setError] = useState("");
@@ -16,16 +17,14 @@ function Login() {
     event.preventDefault();
     axios
       .post("http://localhost:8081/login", values)
-      .then((res) =>
-        // console.log(res)
-        {
-          if (res.data.Status === "Success") {
-            navigate("/");
-          } else {
-            setError(res.data.Error);
-          }
+      .then((res) => {
+        console.log(res);
+        if (res.data.Status === "Success") {
+          navigate("/");
+        } else {
+          setError(res.data.Error);
         }
-      )
+      })
       .catch((err) => console.log(err));
   };
 

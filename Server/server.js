@@ -16,12 +16,14 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("public"));
+
 const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "Attendance_Tracking_System",
 });
+
 con.connect(function (err) {
   if (err) {
     console.log("Error in Connection");
@@ -29,6 +31,7 @@ con.connect(function (err) {
     console.log("Connected");
   }
 });
+
 app.post("/login", (req, res) => {
   const sql = "SELECT * FROM user WHERE email = ? AND  password = ?";
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
@@ -99,11 +102,11 @@ app.post("/update", (req, res) => {
 });
 
 app.post("/updatePercentage", (req, res) => {
-  console.log("Received the request at /updatePercentage");
+  // console.log("Received the request at /updatePercentage");
   const id = req.body.id;
   const percentage = req.body.percentage;
-  console.log(id);
-  console.log(percentage);
+  // console.log(id);
+  // console.log(percentage);
   const sql3 = "UPDATE Student SET Percentage = CAST(? AS DOUBLE) WHERE USN=?";
 
   con.query(sql3, [percentage, id], (err, result) => {
