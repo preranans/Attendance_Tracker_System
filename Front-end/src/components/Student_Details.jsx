@@ -60,13 +60,14 @@ export default function Student_Details() {
     status: "",
   });
 
-  const [error, setError] = useState(0);
+  // const [error, setError] = useState(0);
 
   const showAlert = (msg, type) => {
     setAlert({
       message: msg,
       status: type,
     });
+
     setTimeout(() => {
       setAlert(null);
     }, 1500);
@@ -79,10 +80,10 @@ export default function Student_Details() {
       .then((res) => {
         console.log(res);
         if (res.data.Status === "Error") {
-          setError(0);
+          // setError(0);
           showAlert("USN already exists", "danger");
         } else {
-          setError(1);
+          // setError(1);
           showAlert("Inserted to database", "success");
         }
       })

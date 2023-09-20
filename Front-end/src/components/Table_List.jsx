@@ -5,6 +5,7 @@ export default function Table_List(props) {
   const [show, setShow] = useState(true);
   const [marked, setMarked] = useState(false);
 
+  // const data = props.data
   const handlePresent = () => {
     setShow(false);
     setMarked(true);

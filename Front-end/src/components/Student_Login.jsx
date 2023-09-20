@@ -12,7 +12,7 @@ export default function Student_Login() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const state = values.USN;
+    // const state = values.USN;
     axios
       .post("http://localhost:8081/studentlogin", values)
       .then((res) => {

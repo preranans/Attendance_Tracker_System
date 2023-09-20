@@ -6,6 +6,7 @@ export default function TableViewStudent(props) {
   const [USN, setUSN] = useState({
     USN: props.USN,
   });
+  // const usn = props.USN;
 
   //   const [error, setError] = useState(false);
   const [result, setResult] = useState([]);
