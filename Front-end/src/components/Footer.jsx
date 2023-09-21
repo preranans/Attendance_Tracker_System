@@ -8,7 +8,7 @@ export default function Footer() {
     color: "white",
     width: "100%",
     padding: "5px",
-    justifyContent: "center", // Center align contents
+    justifyContent: "center",
     alignItems: "center",
     display: "flex",
   };
@@ -19,14 +19,14 @@ export default function Footer() {
   };
 
   const email = "nsprerana@gmail.com";
-  const phoneNumber = "+91 7829639815"; // Add your phone number here
+  const phoneNumber = "+91 7829639815";
 
-  // Function to open the default email client when the envelope icon is clicked
+
   const sendEmail = () => {
     window.location.href = `mailto:${email}`;
   };
 
-  // Function to initiate a call when the phone icon is clicked
+
   const makeCall = () => {
     window.location.href = `tel:${phoneNumber}`;
   };
@@ -46,7 +46,7 @@ export default function Footer() {
         <span className="ml-4">
           <i className="bi bi-telephone"></i>
           <a href={`tel:${phoneNumber}`} className="ml-2" onClick={makeCall}>
-            {phoneNumber} {/* Use {" "} for space */}
+            {phoneNumber}
           </a>
         </span>
       </div>

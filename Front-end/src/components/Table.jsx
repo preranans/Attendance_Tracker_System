@@ -78,14 +78,13 @@ export default function Table() {
   };
 
   const buttonStyle = {
-    width: "100%",
-    padding: "10px",
+    marginLeft: "20px",
     backgroundColor: "#007bff",
     color: "white",
     border: "none",
-    borderRadius: "5px",
-    marginTop: "10px",
+    padding: "10px 20px",
     cursor: "pointer",
+    width: "10%",
   };
 
   return (
@@ -140,6 +139,7 @@ export default function Table() {
             <button
               className="btn btn-outline-success my-2 my-sm-0 p-2"
               type="submit"
+              style={buttonStyle}
             >
               Search
             </button>

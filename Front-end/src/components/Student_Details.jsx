@@ -95,7 +95,7 @@ export default function Student_Details() {
   return (
     <div>
       <Alert alert={alert} />
-      <br></br>
+
       <h3 style={headingStyle}>Enter Student Details</h3>
       <div className="container" style={containerStyle}>
         <form onSubmit={handleSubmit}>
