@@ -197,13 +197,13 @@ app.post("/updatePercentage", (req, res) => {
 
 app.post("/addStudent", (req, res) => {
   const { Name, USN, semester, section } = req.body;
-  console.log("Receiving at addstudent");
+  // console.log("Receiving at addstudent");
   const insert = "INSERT INTO Student(Name,USN,Class, Section) VALUES(?,?,?,?)";
   const values = [Name, USN, semester, section];
-  console.log(Name);
-  console.log(section);
-  console.log(USN);
-  console.log(semester);
+  // console.log(Name);
+  // console.log(section);
+  // console.log(USN);
+  // console.log(semester);
 
   con.query(insert, values, (err, result) => {
     if (err) {
@@ -217,7 +217,7 @@ app.post("/addStudent", (req, res) => {
 });
 
 app.post("/studentlogin", (req, res) => {
-  console.log("Running in student login ");
+  // console.log("Running in student login ");
   const usn = req.body.USN;
   const sql = "SELECT * FROM Student WHERE USN = ? AND Password = ?";
   con.query(sql, [req.body.USN, req.body.Password], (err, result) => {
@@ -236,13 +236,14 @@ app.post("/studentlogin", (req, res) => {
 });
 
 app.post("/viewstudent", (req, res) => {
-  console.log("running in usn");
+  // console.log("running in usn");
   // const usn = req.body.USN;
   const sql = "SELECT * FROM Student WHERE USN = ?";
   con.query(sql, [req.body.USN], (err, result) => {
     if (err) {
       return res.json({
         Status: "Error",
+        Error: "Error in running query " + err,
       });
     }
     console.log(result);

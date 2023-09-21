@@ -13,6 +13,11 @@ export default function Footer() {
     display: "flex",
   };
 
+  const styles1 = {
+    marginRight: "15px",
+    marginLeft: "15px",
+  };
+
   const email = "nsprerana@gmail.com";
   const phoneNumber = "+91 7829639815"; // Add your phone number here
 
@@ -30,7 +35,12 @@ export default function Footer() {
     <footer style={styles}>
       <div>
         Contact us:{"    "}
-        <a href={`mailto:${email}`} className="ml-2" onClick={sendEmail}>
+        <a
+          style={styles1}
+          href={`mailto:${email}`}
+          className="ml-2"
+          onClick={sendEmail}
+        >
           <i className="bi bi-envelope"></i>
         </a>
         <span className="ml-4">

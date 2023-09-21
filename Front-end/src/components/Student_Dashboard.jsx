@@ -9,7 +9,7 @@ export default function Student_Dashboard() {
 
   // console.log(props.location?.state);
   let { USN } = useParams();
-  console.log(USN);
+  // console.log(USN);
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">

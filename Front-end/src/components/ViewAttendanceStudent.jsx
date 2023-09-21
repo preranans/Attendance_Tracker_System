@@ -9,7 +9,7 @@ import TableViewStudent from "./TableViewStudent";
 export default function ViewAttendanceStudent() {
   // const values = props.USN;
   let { USN } = useParams();
-  console.log(USN);
+  // console.log(USN);
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
