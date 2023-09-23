@@ -7,7 +7,7 @@ export default function Student_Login() {
     USN: "",
     Password: "",
   });
-
+  const [showTerms, setShowTerms] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -27,6 +27,9 @@ export default function Student_Login() {
       .catch((err) => {
         console.log(err);
       });
+  };
+  const toggleTerms = () => {
+    setShowTerms(!showTerms);
   };
 
   return (
@@ -66,10 +69,28 @@ export default function Student_Login() {
             {" "}
             Log in
           </button>
+          <div>
+            <a href="#" onClick={toggleTerms}>
+              {showTerms ? "Hide Terms and Conditions" : "Show Terms and Conditions"}
+            </a>
+          </div>
+          {showTerms && (
+            <div>
+              <h4>Terms and Conditions</h4>
+              <ul style={{ textAlign: "left", marginLeft: "20px" }}>
+                <li><strong>Usage:</strong> Agree to use for attendance tracking.</li>
+                <li><strong>Accuracy:</strong> Ensure attendance record accuracy.</li>
+                <li><strong>User Responsibility:</strong> Responsible for login details and data input.</li>
+              </ul>
+            </div>
+
+          )}
+
+
           <input type="checkbox" name="checkbox1" required />
           <label htmlFor="checkbox1">
             {" "}
-            <br></br> I agree to the terms and policies
+            <br></br> I agree to the terms and conditions
           </label>
           <br></br>
         </form>
